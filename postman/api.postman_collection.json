@@ -1,0 +1,460 @@
+{
+	"info": {
+		"_postman_id": "dd96c384-d95c-44c8-af40-bdee6ab218bb",
+		"name": "api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20350459"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/users",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vasya1@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/users",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/users/admin@mail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"users",
+								"admin@mail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ban user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"91628538-1cbd-4db7-835b-823747c5237d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/users/ban",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"users",
+								"ban"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Create role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ADMIN222\",\r\n    \"description\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/roles",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"USER\",\r\n    \"privileges\": [\r\n\"POST_CREATE\",\r\n\"POST_UPDATE\",\r\n\"POST_DELETE\",\r\n\"USER_DELETE\",\r\n\"USER_UPDATE\",\r\n\"USER_UPDATE_SELF\",\r\n\"USER_GET\",\r\n\"ROLE_CREATE\",\r\n\"ROLE_UPDATE\",\r\n\"ROLE_DELETE\",\r\n\"ROLE_GET\",\r\n\"PRIVILEGE_CREATE\",\r\n\"PRIVILEGE_UPDATE\",\r\n\"PRIVILEGE_DELETE\",\r\n\"PRIVILEGE_GET\"\r\n]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/roles",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Privileges",
+			"item": [
+				{
+					"name": "Create privilege",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"TEST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/privileges",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"privileges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get privileges",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/privileges",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"privileges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update privilege",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"TEST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/privileges",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"privileges"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.access_token) {\r",
+									"postman.setEnvironmentVariable(\"USER_TOKEN\", jsonData.access_token);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"ghjcnjnfr\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"ghjcnjnfr\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/{{PREFIX}}/auth/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"{{PREFIX}}",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000",
+					"host": [
+						"localhost"
+					],
+					"port": "4000"
+				}
+			},
+			"response": []
+		}
+	]
+}
